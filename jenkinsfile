@@ -2,21 +2,36 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/your-username/portfolio-project.git'
+                git 'https://github.com/Uday-63/portfolio-project.git'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo "HTML build not required (static files)"
+                sh '''
+                  docker build -t portfolio-image .
+                '''
             }
         }
 
-        stage('Archive Artifact') {
+        stage('Run Container on Port 4000') {
             steps {
-                archiveArtifacts artifacts: 'src/*.html', fingerprint: true
+                sh '''
+                  docker rm -f portfolio-container || true
+                  docker run -d \
+                    --name portfolio-container \
+                    -p 4000:80 \
+                    portfolio-image
+                '''
+            }
+        }
+
+        stage('Archive HTML Artifact') {
+            steps {
+                archiveArtifacts artifacts: '**/*.html', fingerprint: true
             }
         }
     }

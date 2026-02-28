@@ -1,41 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Uday Peethala | DevOps Engineer</title>
+
+  <!-- CSS inside HTML -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: #0d6efd;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    section {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    h2 {
+      color: #0d6efd;
+    }
+    ul {
+      list-style: square;
+      padding-left: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #084298;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>Uday Peethala</h1>
-  <p>DevOps Engineer</p>
+  <header>
+    <h1>Uday Peethala</h1>
+    <p>DevOps Engineer</p>
+  </header>
 
-  <hr>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a DevOps Engineer with 3+ years of experience in Linux, Git, Docker,
+      Jenkins, AWS and CI/CD pipelines.
+    </p>
+  </section>
 
-  <h2>About Me</h2>
-  <p>
-    I am a DevOps Engineer with experience in Linux, Git, Docker, Jenkins and AWS.
-  </p>
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>Linux</li>
+      <li>Git & GitHub</li>
+      <li>Docker</li>
+      <li>Jenkins</li>
+      <li>AWS</li>
+      <li>CI/CD</li>
+    </ul>
+  </section>
 
-  <h2>Skills</h2>
-  <ul>
-    <li>Linux</li>
-    <li>Git</li>
-    <li>Docker</li>
-    <li>Jenkins</li>
-    <li>AWS</li>
-  </ul>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li>HTML Portfolio Website</li>
+      <li>Dockerized Static Website</li>
+      <li>Jenkins CI/CD Pipeline</li>
+    </ul>
+  </section>
 
-  <h2>Projects</h2>
-  <ul>
-    <li>HTML portfolio website</li>
-    <li>Dockerized static website</li>
-    <li>CI/CD pipeline using Jenkins</li>
-  </ul>
+  <section>
+    <h2>Contact</h2>
+    <p>Email: uday@example.com</p>
+    <button onclick="showMessage()">Click Me</button>
+    <p id="msg"></p>
+  </section>
 
-  <h2>Contact</h2>
-  <p>Email: uday@example.com</p>
+  <footer>
+    <p>© 2026 Uday Peethala</p>
+  </footer>
 
-  <hr>
-  <p>© 2026 Uday</p>
+  <!-- JavaScript inside HTML -->
+  <script>
+    function showMessage() {
+      document.getElementById("msg").innerText =
+        "Thanks for visiting my portfolio 🚀";
+    }
+  </script>
 
 </body>
 </html>
