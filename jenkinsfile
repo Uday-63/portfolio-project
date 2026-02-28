@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/your-username/portfolio-project.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "HTML build not required (static files)"
+            }
+        }
+
+        stage('Archive Artifact') {
+            steps {
+                archiveArtifacts artifacts: 'src/*.html', fingerprint: true
+            }
+        }
+    }
+}
