@@ -5,16 +5,18 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git branch: 'main',
-                url: https://github.com/Uday-63/portfolio-project.git
+                git(
+                    branch: 'main',
+                    url: 'https://github.com/Uday-63/portfolio-project.git'
+                )
             }
         }
 
         stage('Verify Photo') {
             steps {
                 sh '''
-                echo "Checking image folder..."
-                ls -l images
+                echo "Checking images folder"
+                ls -l images || echo "images folder not found"
                 '''
             }
         }
@@ -25,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Website') {
+        stage('Run Docker Container') {
             steps {
                 sh '''
                 docker rm -f uday || true
@@ -37,10 +39,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ Photo updated & website deployed successfully"
+            echo "✅ Jenkins build successful – photo deployed"
         }
         failure {
-            echo "❌ Pipeline failed"
+            echo "❌ Jenkins build failed"
         }
     }
 }
