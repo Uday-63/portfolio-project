@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Uday Peethala | DevOps Engineer</title>
 
-  <!-- CSS inside HTML -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,25 +11,40 @@
       background: #f4f6f8;
       color: #333;
     }
+
     header {
       background: #0d6efd;
       color: white;
-      text-align: center;
       padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
+
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid white;
+      object-fit: cover;
+    }
+
     section {
       background: white;
       margin: 20px;
       padding: 20px;
       border-radius: 8px;
     }
+
     h2 {
       color: #0d6efd;
     }
+
     ul {
       list-style: square;
       padding-left: 20px;
     }
+
     button {
       padding: 10px 15px;
       background: #0d6efd;
@@ -39,9 +53,11 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     button:hover {
       background: #084298;
     }
+
     footer {
       background: #222;
       color: white;
@@ -54,8 +70,14 @@
 <body>
 
   <header>
-    <h1>Uday Peethala</h1>
-    <p>DevOps Engineer</p>
+    <!-- Your Photo -->
+    <img src="unofficial uday pics.jpeg" alt="Uday Peethala" class="profile-pic">
+
+    <!-- Your Name -->
+    <div>
+      <h1>Uday Peethala</h1>
+      <p>DevOps Engineer</p>
+    </div>
   </header>
 
   <section>
@@ -98,7 +120,6 @@
     <p>© 2026 Uday Peethala</p>
   </footer>
 
-  <!-- JavaScript inside HTML -->
   <script>
     function showMessage() {
       document.getElementById("msg").innerText =
