@@ -6,7 +6,7 @@ pipeline {
         stage('Clone Code') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/YOUR-USERNAME/portfolio-project.git'
+                url:https://github.com/Uday-63/portfolio-project.git
             }
         }
 
