@@ -1,13 +1,17 @@
-FROM nginx:latest
+FROM nginx:alpine
 
-# Remove default nginx files
+# Clean default html
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy website files (HTML, CSS, JS, Images)
-COPY . /usr/share/nginx/html/
+# Copy only website files
+COPY index.html /usr/share/nginx/html/
+COPY css /usr/share/nginx/html/css
+COPY js /usr/share/nginx/html/js
+COPY images /usr/share/nginx/html/images
 
-# Expose nginx port
+# Fix permissions
+RUN chmod -R 755 /usr/share/nginx/html
+
 EXPOSE 80
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
