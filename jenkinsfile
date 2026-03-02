@@ -3,36 +3,45 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/Uday-63/portfolio-project.git'
+                git branch: 'main',
+                url: 'https://github.com/your-username/portfolio-project.git'
+            }
+        }
+
+        stage('Verify Photo Exists') {
+            steps {
+                sh '''
+                echo "Checking image folder..."
+                ls -l images
+                '''
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh '''
-                  docker build -t portfolio-image .
-                '''
+                sh 'docker build -t portfolio-image .'
             }
         }
 
-        stage('Run Container on Port 4000') {
+        stage('Deploy Container') {
             steps {
                 sh '''
-                  docker rm -f portfolio-container || true
-                  docker run -d \
-                    --name portfolio-container \
-                    -p 4000:80 \
-                    portfolio-image
+                docker rm -f portfolio-container || true
+                docker run -d -p 4000:80 --name portfolio-container portfolio-image
                 '''
-            }
-        }
-
-        stage('Archive HTML Artifact') {
-            steps {
-                archiveArtifacts artifacts: '**/*.html', fingerprint: true
             }
         }
     }
+
+    post {
+        success {
+            echo "✅ Website deployed with updated photo"
+        }
+        failure {
+            echo "❌ Pipeline failed"
+        }
+    }
 }
+
